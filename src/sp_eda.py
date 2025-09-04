@@ -21,21 +21,32 @@ def eda_preliminar(df):
     """
     
     display(df.sample(5))  #Muestreo aleatorio
+
     print('--------------------------')
     print('DIMENSIONES DEL DATASET')
     print(f'El conjunto de datos tiene {df.shape[0]} filas y {df.shape[1]} columnas.')
     print('--------------------------')
+
     print('INFO')
     display(df.info())  #Info del df
+
     print('--------------------------')
     print('VALORES NULOS')
     display(df.isnull().mean()*100)  # % de nulos
     print('--------------------------')
+
     print('DUPLICADOS')
     print(f'Hay un total de {df.duplicated().sum()} duplicados') #Duplicados
+
+    print('--------------------------')
     print('FRECUENCIAS DE CATEGÓRICAS')
     for col in df.select_dtypes(include='object').columns: 
         print(col.upper())
         print(df[col].value_counts())
         print('--------------------------')
+
+    print('--------------------------')
+    print('ESTADÍSTICOS NUMERICAS')
+    display(df.describe().T)  #Estadísticos  
+    print('--------------------------')
     
